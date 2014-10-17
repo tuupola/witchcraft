@@ -1,0 +1,7 @@
+/node_modules/
+/vendor/
+/report/
+/demo/vendor/
+/demo/.vagrant/
+.DS_Store
+composer.lock

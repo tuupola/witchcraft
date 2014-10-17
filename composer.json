@@ -1,0 +1,29 @@
+{
+    "name": "tuupola/witchraft",
+    "type": "library",
+    "description": "Opionated magic methods as traits",
+    "keywords": ["magic", "methods", "witchcraft"],
+    "homepage": "https://github.com/tuupola/witchcraft",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mika Tuupola",
+            "email": "tuupola@appelsiini.net",
+            "homepage": "http://www.appelsiini.net/"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "~4.3",
+        "squizlabs/php_codesniffer": "~1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Witchcraft\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Witchcraft\\Test\\": "test"
+        }
+    }
+}
