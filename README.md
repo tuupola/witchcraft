@@ -56,7 +56,7 @@ class Unicorn
 }
 ```
 
-It is all works really nice with ide autocompletes and everything. Problem is your code looks quite ugly.
+It all works really nice with ide autocompletes and everything. Problem is your code looks quite ugly.
 
 ```php
 $unicorn = new Unicorn();
