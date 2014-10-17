@@ -6,6 +6,7 @@ Opionated PHP magic methods as traits.
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Build Status](https://img.shields.io/travis/tuupola/witchcraft/master.svg?style=flat-square)](https://travis-ci.org/tuupola/slim-basic-auth)
 [![HHVM Status](https://img.shields.io/hhvm/tuupola/witchcraft.svg?style=flat-square)](http://hhvm.h4cc.de/package/tuupola/slim-basic-auth)
+[![Coverage](http://img.shields.io/codecov/c/github/tuupola/witchcraft.svg?style=flat-square)](https://codecov.io/github/tuupola/witchcraft)
 
 ## Install
 
@@ -98,3 +99,7 @@ $unicorn->color = "rainbow";
 
 print $unicorn->owner;
 ```
+
+# Why?
+
+Because I think `getFoo()` and `setFoo("bar")` are ugly.
