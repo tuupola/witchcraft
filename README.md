@@ -64,6 +64,8 @@ $unicorn->setOwner("tuupola")->setColor("rainbow");
 print $unicorn->getOwner();
 ```
 
+## Magic methods
+
 Witchcraft to the resque. If you add `Witchcraft\MagicMethods` trait you can use pretty methods.
 
 ```php
@@ -80,6 +82,8 @@ $unicorn = new Unicorn();
 $unicorn->owner("tuupola")->color("rainbow");
 print $unicorn->owner();
 ```
+
+## Magic properties
 
 If you add `Witchcraft\MagicProperties` trait you can use pretty properties.
 
