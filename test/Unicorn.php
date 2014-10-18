@@ -1,7 +1,4 @@
 <?php
-/**
- * @codeCoverageIgnore
- */
 
 /*
  * This file is part of the Witchcraft package
@@ -15,8 +12,6 @@
  *   https://github.com/tuupola/witchcraft
  *
  */
-
-
 
 namespace Witchcraft\Test;
 
@@ -34,7 +29,7 @@ class Unicorn
         /* Default options. */
         $this->options = array(
             "color" => "rainbow",
-            "owner" => "tuupola"
+            "owner" => "tuupola",
         );
 
         if ($options) {
@@ -66,5 +61,22 @@ class Unicorn
     {
         $this->options["owner"] = $owner;
         return $this;
+    }
+
+    public function getBirthday()
+    {
+        return $this->options["birthday"];
+    }
+
+    public function setBirthday($birthday)
+    {
+        $this->options["birthday"] = \DateTime::createFromFormat("Y-m-d", $birthday);
+        return $this;
+    }
+
+    public function getAge()
+    {
+        $now = new \DateTime();
+        return $this->birthday->diff($now)->format("%y years");
     }
 }

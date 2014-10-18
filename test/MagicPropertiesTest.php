@@ -15,9 +15,6 @@
 
 namespace Witchcraft\Test;
 
-use \Witchcraft\MagicProperties;
-use \Witchcraft\Test\Unicorn;
-
 class MagicPropertiesTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -37,10 +34,24 @@ class MagicPropertiesTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($unicorn->color, "black");
     }
 
+    public function testShouldGetAndSetBirthday()
+    {
+        $unicorn = new Unicorn();
+        $unicorn->birthday = "1930-24-12";
+        $test = \DateTime::createFromFormat("Y-m-d", "1930-24-12");
+        $this->assertEquals($unicorn->birthday, $test);
+    }
+
+    public function testShouldGetAge()
+    {
+        $unicorn = new Unicorn();
+        $unicorn->birthday = "1930-24-12";
+        $this->assertEquals($unicorn->age, "82 years");
+    }
+
     public function testGetShouldThrowException()
     {
         $this->setExpectedException("Exception");
-
         $unicorn = new Unicorn();
         $unicorn->nosuch;
     }
@@ -48,7 +59,6 @@ class MagicPropertiesTest extends \PHPUnit_Framework_TestCase
     public function testSetShouldThrowException()
     {
         $this->setExpectedException("Exception");
-
         $unicorn = new Unicorn();
         $unicorn->nosuch = 666;
     }
