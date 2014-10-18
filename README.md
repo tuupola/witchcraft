@@ -18,18 +18,18 @@ $ composer require tuupola/witchcraft
 
 ## Usage
 
-You have your usual class with boilerplate mutators.
+You have your usual class with boilerplate accessors and mutators.
 
 ```php
 class Unicorn
 {
     private $color;
-    private $owner;
+    private $birthday;
 
-    public function __construct($color, $owner)
+    public function __construct($color = "white", $birthday = null)
     {
         $this->color = $color;
-        $this->color = $owner;
+        $this->birthday = $birthday;
     }
 
     public function getColor()
@@ -43,15 +43,21 @@ class Unicorn
         return $this;
     }
 
-    public function getOwner()
+    public function getBirthday()
     {
-        return $this->owner;
+        return $this->birthday;
     }
 
-    public function setOwner($owner)
+    public function setBirthday($birthday)
     {
-        $this->owner = $owner;
+        $this->birthday = DateTime::createFromFormat("Y-m-d", $birthday);
         return $this;
+    }
+
+    public function getAge()
+    {
+        $now = new DateTime();
+        return $this->birthday->diff($now)->format("%y years");
     }
 }
 ```
@@ -60,8 +66,8 @@ It all works really nice with ide autocompletes and everything. Problem is your 
 
 ```php
 $unicorn = new Unicorn();
-$unicorn->setOwner("tuupola")->setColor("rainbow");
-print $unicorn->getOwner();
+$unicorn->setBirthday("1930-24-12")->setColor("rainbow");
+print $unicorn->getAge();
 ```
 
 ## Magic methods
@@ -74,13 +80,16 @@ class Unicorn
     use \Witchcraft\MagicMethods;
 
     private $color;
-    private $owner;
+    private $birthday;
+
+    ...
+}
 ```
 
 ```php
 $unicorn = new Unicorn();
-$unicorn->owner("tuupola")->color("rainbow");
-print $unicorn->owner();
+$unicorn->birthday("1930-24-12")->color("rainbow");
+print $unicorn->age();
 ```
 
 ## Magic properties
@@ -94,14 +103,16 @@ class Unicorn
 
     private $color;
     private $owner;
+
+    ...
+}
 ```
 
 ```php
 $unicorn = new Unicorn();
-$unicorn->owner = "tuupola";
+$unicorn->birthday = "1930-24-12";
 $unicorn->color = "rainbow";
-
-print $unicorn->owner;
+print $unicorn->age;
 ```
 
 # Why?
