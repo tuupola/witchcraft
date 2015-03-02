@@ -20,25 +20,24 @@ class Unicorn
 
     use \Witchcraft\MagicMethods;
     use \Witchcraft\MagicProperties;
+    use \Witchcraft\Hydrate;
 
     private $color;
-    private $options;
+    private $options = [];
+
+    public $speed;
 
     public function __construct(array $options = [])
     {
         /* Default options. */
-        $this->options = array(
+        $defaults = array(
             "color" => "rainbow",
             "owner" => "tuupola",
         );
 
-        if ($options) {
-            $this->options = array_merge($this->options, $options);
-        }
-
-        /* Test color as private property. */
-        $this->color = $this->options["color"];
-        unset($this->options["color"]);
+        /* Merge defaults with passed in options. */
+        $merged = array_merge($defaults, $options);
+        $this->hydrate($merged);
     }
 
     public function getColor()
