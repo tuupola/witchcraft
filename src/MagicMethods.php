@@ -35,6 +35,6 @@ trait MagicMethods
 
         $message =  "Call to undefined method " . __CLASS__ . "::" . $method . "()";
 
-        throw new \Exception($message);
+        throw new \RuntimeException($message);
     }
 }

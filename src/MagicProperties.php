@@ -30,7 +30,7 @@ trait MagicProperties
         }
 
         $message =  "Trying to get undefined property " . __CLASS__ . "::$" . $property . ".";
-        throw new \Exception($message);
+        throw new \RuntimeException($message);
 
     }
 
@@ -45,6 +45,6 @@ trait MagicProperties
         }
 
         $message =  "Trying to set undefined property " . __CLASS__ . "::$" . $property . ".";
-        throw new \Exception($message);
+        throw new \RuntimeException($message);
     }
 }
