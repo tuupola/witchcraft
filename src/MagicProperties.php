@@ -36,7 +36,6 @@ trait MagicProperties
 
     public function __set($property, $value)
     {
-
         $camel_case = str_replace(" ", "", ucwords(str_replace("_", " ", $property)));
         $method = "set{$camel_case}";
 

@@ -45,7 +45,7 @@ class MagicMethodsTest extends \PHPUnit_Framework_TestCase
     public function testShouldGetAge()
     {
         $unicorn = new Unicorn();
-        $unicorn->birthday("1930-24-12");
+        $unicorn->birthday("1930-24-10");
         $this->assertEquals($unicorn->age(), "83 years");
     }
 
@@ -61,5 +61,19 @@ class MagicMethodsTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException("Exception");
         $unicorn = new Unicorn();
         $unicorn->nosuch(666);
+    }
+
+    public function testShouldGetAndSetDynamicFunction()
+    {
+        $unicorn = new Unicorn();
+        $unicorn->dynamic(function ($input) {
+            return "Got {$input}!";
+        });
+        $this->assertEquals($unicorn->dynamic("milk"), "Got milk!");
+
+        $unicorn->dynamic = function ($input) {
+            return "No {$input}!";
+        };
+        $this->assertEquals($unicorn->dynamic("beer"), "No beer!");
     }
 }

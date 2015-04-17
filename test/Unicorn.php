@@ -22,22 +22,18 @@ class Unicorn
     use \Witchcraft\MagicProperties;
     use \Witchcraft\Hydrate;
 
-    private $color;
-    private $options = [];
-
     public $speed;
+
+    private $color = "rainbow";
+    private $options = [
+        "owner" => "tuupola",
+        "birthday" => null,
+        "dynamic" => null
+    ];
 
     public function __construct(array $options = [])
     {
-        /* Default options. */
-        $defaults = array(
-            "color" => "rainbow",
-            "owner" => "tuupola",
-        );
-
-        /* Merge defaults with passed in options. */
-        $merged = array_merge($defaults, $options);
-        $this->hydrate($merged);
+        $this->hydrate($options);
     }
 
     public function getColor()
@@ -77,5 +73,16 @@ class Unicorn
     {
         $now = new \DateTime();
         return $this->birthday->diff($now)->format("%y years");
+    }
+
+    public function getDynamic()
+    {
+        return $this->options["dynamic"];
+    }
+
+    public function setDynamic($dynamic)
+    {
+        $this->options["dynamic"] = $dynamic;
+        return $this;
     }
 }
