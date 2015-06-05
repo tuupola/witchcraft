@@ -79,10 +79,7 @@ class Unicorn
 {
     use \Witchcraft\MagicMethods;
 
-    private $color;
-    private $birthday;
-
-    ...
+    /* Rest of the code stays exactly the same. */
 }
 ```
 
@@ -100,11 +97,8 @@ If you add `Witchcraft\MagicProperties` trait you can use pretty properties.
 class Unicorn
 {
     use \Witchcraft\MagicProperties;
-
-    private $color;
-    private $owner;
-
-    ...
+    
+    /* Rest of the code stays exactly the same. */
 }
 ```
 
