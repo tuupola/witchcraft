@@ -30,13 +30,12 @@ trait MagicProperties
         }
 
         $message =  "Trying to get undefined property " . __CLASS__ . "::$" . $property . ".";
-        throw new \Exception($message);
+        throw new \RuntimeException($message);
 
     }
 
     public function __set($property, $value)
     {
-
         $camel_case = str_replace(" ", "", ucwords(str_replace("_", " ", $property)));
         $method = "set{$camel_case}";
 
@@ -45,6 +44,6 @@ trait MagicProperties
         }
 
         $message =  "Trying to set undefined property " . __CLASS__ . "::$" . $property . ".";
-        throw new \Exception($message);
+        throw new \RuntimeException($message);
     }
 }
