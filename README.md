@@ -97,7 +97,7 @@ If you add `Witchcraft\MagicProperties` trait you can use pretty properties.
 class Unicorn
 {
     use \Witchcraft\MagicProperties;
-    
+
     /* Rest of the code stays exactly the same. */
 }
 ```
@@ -107,6 +107,30 @@ $unicorn = new Unicorn();
 $unicorn->birthday = "1930-24-12";
 $unicorn->color = "rainbow";
 print $unicorn->age;
+```
+
+## Dynamic methods
+
+As a bonus you can dynamically assing methods to the object.
+
+```php
+$unicorn->something(function ($input) {
+    return "Got {$input}!";
+});
+
+$unicorn->something("milk");
+
+/* Got milk! */
+```
+
+```php
+$unicorn->something = function ($input) {
+    return "No {$input} :(";
+};
+
+$unicorn->something("beer");
+
+/* No beer :() */
 ```
 
 # Why?
