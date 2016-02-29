@@ -9,10 +9,6 @@ php:
     - hhvm
     - 7.0
 
-matrix:
-  allow_failures:
-    - rvm: hhvm
-
 before_install:
     - pip install --user codecov
 
