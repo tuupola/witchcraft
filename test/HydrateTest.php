@@ -21,13 +21,16 @@ class HydrateTest extends \PHPUnit_Framework_TestCase
     {
         $unicorn = new Unicorn([
             "color" => "blue",
-            "owner" => "malvina"
+            "owner" => "malvina",
+            "super.power" => "sneeze"
         ]);
         $this->assertEquals($unicorn->color(), "blue");
         $this->assertEquals($unicorn->owner(), "malvina");
+        $this->assertEquals($unicorn->superPower(), "sneeze");
 
-        $unicorn->hydrate(["color" => "black"]);
+        $unicorn->hydrate(["color" => "black", "super.power" => "fly"]);
         $this->assertEquals($unicorn->color(), "black");
+        $this->assertEquals($unicorn->superPower(), "fly");
     }
 
     public function testShouldHydrateWithProperty()

@@ -28,7 +28,8 @@ class Unicorn
     private $options = [
         "owner" => "tuupola",
         "birthday" => null,
-        "dynamic" => null
+        "dynamic" => null,
+        "super.power" => null
     ];
 
     public function __construct(array $options = [])
@@ -83,6 +84,17 @@ class Unicorn
     public function setDynamic($dynamic)
     {
         $this->options["dynamic"] = $dynamic;
+        return $this;
+    }
+
+    public function getSuperPower()
+    {
+        return $this->options["super.power"];
+    }
+
+    public function setSuperPower($power)
+    {
+        $this->options["super.power"] = $power;
         return $this;
     }
 }

@@ -20,7 +20,8 @@ trait Hydrate
     public function hydrate($data = [])
     {
         foreach ($data as $key => $value) {
-            $method = "set" . ucfirst($key);
+            $method = "set" . ucwords($key, ".");
+            $method = str_replace(".", "", $method);
             if (method_exists($this, $method)) {
                 /* Try to use setter */
                 call_user_func([$this, $method], $value);
