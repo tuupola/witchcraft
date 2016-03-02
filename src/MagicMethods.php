@@ -26,7 +26,7 @@ trait MagicMethods
             if (method_exists($this, $inner_method)) {
                 $value = call_user_func([$this, $inner_method]);
                 /* If value is callable run it. */
-                if (is_callable($value)) {
+                if ($value instanceof \Closure) {
                     return call_user_func($value, $arguments[0]);
                 }
             }
