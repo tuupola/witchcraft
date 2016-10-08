@@ -25,9 +25,9 @@ trait MagicMethods
             $inner_method = "get" . ucfirst($method);
             if (method_exists($this, $inner_method)) {
                 $value = call_user_func([$this, $inner_method]);
-                /* If value is callable run it. */
+                /* If value is anonymous function run it. */
                 if ($value instanceof \Closure) {
-                    return call_user_func($value, $arguments[0]);
+                    return call_user_func_array($value, $arguments);
                 }
             }
         }

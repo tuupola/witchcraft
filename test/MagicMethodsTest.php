@@ -76,4 +76,18 @@ class MagicMethodsTest extends \PHPUnit_Framework_TestCase
         };
         $this->assertEquals($unicorn->dynamic("beer"), "No beer!");
     }
+
+    public function testShouldGetAndSetDynamicFunctionWithManyParameters()
+    {
+        $unicorn = new Unicorn();
+        $unicorn->dynamic(function ($foo, $bar) {
+            return "Got {$foo} and {$bar}!";
+        });
+        $this->assertEquals($unicorn->dynamic("milk", "honey"), "Got milk and honey!");
+
+        $unicorn->dynamic = function ($foo, $bar) {
+            return "No {$foo} or {$bar}!";
+        };
+        $this->assertEquals($unicorn->dynamic("beer", "vodka"), "No beer or vodka!");
+    }
 }
