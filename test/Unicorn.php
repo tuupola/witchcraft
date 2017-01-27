@@ -37,6 +37,11 @@ class Unicorn
         $this->hydrate($options);
     }
 
+    public function static()
+    {
+        return "foo";
+    }
+
     public function getColor()
     {
         return $this->color;

@@ -17,7 +17,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~4.3",
-        "squizlabs/php_codesniffer": "~1.5"
+        "squizlabs/php_codesniffer": "~1.5",
+        "phpbench/phpbench": "^0.13.0"
     },
     "autoload": {
         "psr-4": {
@@ -28,5 +29,12 @@
         "psr-4": {
             "Witchcraft\\Test\\": "test"
         }
+    },
+    "scripts": {
+        "benchmark": [
+            "vendor/bin/phpbench run benchmarks/MagicMethodBench.php --report=default",
+            "vendor/bin/phpbench run benchmarks/DynamicMethodBench.php --report=default",
+            "vendor/bin/phpbench run benchmarks/MagicPropertyBench.php --report=default"
+        ]
     }
 }
