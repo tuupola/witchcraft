@@ -33,7 +33,7 @@ class DynamicMethodBench
      */
     public function benchPublicMethods()
     {
-        $foo = $this->unicorn->static();
+        $foo = $this->unicorn->foo();
     }
 
 }

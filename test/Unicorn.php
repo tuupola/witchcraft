@@ -37,7 +37,7 @@ class Unicorn
         $this->hydrate($options);
     }
 
-    public function static()
+    public function foo()
     {
         return "foo";
     }

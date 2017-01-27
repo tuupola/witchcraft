@@ -46,7 +46,7 @@ class MagicMethodsTest extends \PHPUnit_Framework_TestCase
     {
         $unicorn = new Unicorn();
         $unicorn->birthday("1930-24-10");
-        $this->assertEquals($unicorn->age(), "84 years");
+        $this->assertEquals($unicorn->age(), "85 years");
     }
 
     public function testGetShouldThrowException()
