@@ -18,17 +18,13 @@ namespace Witchcraft;
 trait MagicProperties
 {
 
-    public static $methods = null;
-
     public function __get($property)
     {
-        if (null === self::$methods) {
-            self::$methods = array_flip(get_class_methods(__CLASS__));
-        }
+
         $camel_case = str_replace(" ", "", ucwords(str_replace("_", " ", $property)));
         $method = "get{$camel_case}";
 
-        if (isset(self::$methods[$method])) {
+        if (method_exists($this, $method)) {
             /* Return from custom getter. */
             return call_user_func([$this, $method]);
         }
@@ -40,14 +36,10 @@ trait MagicProperties
 
     public function __set($property, $value)
     {
-        if (null === self::$methods) {
-            self::$methods = array_flip(get_class_methods(__CLASS__));
-        }
-
         $camel_case = str_replace(" ", "", ucwords(str_replace("_", " ", $property)));
         $method = "set{$camel_case}";
 
-        if (isset(self::$methods[$method])) {
+        if (method_exists($this, $method)) {
             return call_user_func([$this, $method], $value);
         }
 
