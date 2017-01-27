@@ -18,12 +18,19 @@ namespace Witchcraft;
 trait MagicMethods
 {
 
+    public static $methods = null;
+
     public function __call($method, $arguments)
     {
+        /* Cache the methods of current class. Slightly faster than method_exists() */
+        if (null === self::$methods) {
+            self::$methods = array_flip(get_class_methods(__CLASS__));
+        }
+
         /* Check if we have dynamic method but ignore getters and setters. */
         if (0 === preg_match("/^(get|set)/", $method)) {
             $inner_method = "get" . ucfirst($method);
-            if (method_exists($this, $inner_method)) {
+            if (isset(self::$methods[$inner_method])) {
                 $value = call_user_func([$this, $inner_method]);
                 /* If value is anonymous function run it. */
                 if ($value instanceof \Closure) {
@@ -41,7 +48,7 @@ trait MagicMethods
             /* Called with arguments assume we should set. */
             $method = "set" . ucfirst($method);
 
-            if (method_exists($this, $method)) {
+            if (isset(self::$methods[$method])) {
                 /* If we are setting a callable bind it to current object. */
                 if (is_callable($value)) {
                     $value->bindTo($this, $this);
@@ -51,7 +58,7 @@ trait MagicMethods
         } else {
             /* Called without arguments assume we should get. */
             $method = "get" . ucfirst($method);
-            if (method_exists($this, $method)) {
+            if (isset(self::$methods[$method])) {
                 return call_user_func([$this, $method]);
             }
         }
