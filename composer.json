@@ -33,6 +33,11 @@
         "phpbench/phpbench": "If you want to run benchmarks"
     },
     "scripts": {
+        "test": "composer phplint && composer phpcs && composer phpunit",
+        "phpcs": "vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=*/vendor/*,*/tests/* . -p",
+        "phpunit": "vendor/bin/phpunit --coverage-text --coverage-html ./report",
+        "phplint": "env phplint  '**/*.php' '!vendor/**'",
+        "watch": "find . -name \"*.php\" -not -path \"./vendor/*\"| entr -c composer test",
         "benchmark": [
             "vendor/bin/phpbench run benchmarks/MagicMethodBench.php --report=default",
             "vendor/bin/phpbench run benchmarks/DynamicMethodBench.php --report=default",

@@ -136,3 +136,30 @@ $unicorn->something("beer");
 # Why?
 
 Because I think `getFoo()` and `setFoo("bar")` are ugly.
+
+## Testing
+
+You can run tests either manually...
+
+``` bash
+$ composer test
+```
+
+... or automatically on every code change. You will need [entr](http://entrproject.org/) for this to work.
+
+``` bash
+$ brew install entr
+$ composer watch
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Security
+
+If you discover any security related issues, please email tuupola@appelsiini.net instead of using the issue tracker.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
