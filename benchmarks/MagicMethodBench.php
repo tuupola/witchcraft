@@ -1,5 +1,7 @@
 <?php
 
+namespace Witchcraft;
+
 use Witchcraft\Test\Unicorn;
 
 /**
@@ -34,5 +36,4 @@ class MagicMethodBench
         $this->unicorn->setColor("red");
         $birthday = $this->unicorn->getColor();
     }
-
 }

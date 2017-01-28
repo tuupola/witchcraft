@@ -1,5 +1,7 @@
 <?php
 
+namespace Witchcraft;
+
 use Witchcraft\Test\Unicorn;
 
 /**

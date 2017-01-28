@@ -1,5 +1,7 @@
 <?php
 
+namespace Witchcraft;
+
 use Witchcraft\Test\Unicorn;
 
 /**
@@ -13,7 +15,7 @@ class DynamicMethodBench
     public function init()
     {
         $this->unicorn = new Unicorn();
-        $this->unicorn->dynamic = function() {
+        $this->unicorn->dynamic = function () {
             return "bar";
         };
     }
@@ -35,5 +37,4 @@ class DynamicMethodBench
     {
         $foo = $this->unicorn->foo();
     }
-
 }
