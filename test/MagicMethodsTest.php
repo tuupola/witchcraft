@@ -15,7 +15,9 @@
 
 namespace Witchcraft\Test;
 
-class MagicMethodsTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class MagicMethodsTest extends TestCase
 {
 
     public function testShouldGetAndSetOwner()
@@ -46,19 +48,23 @@ class MagicMethodsTest extends \PHPUnit_Framework_TestCase
     {
         $unicorn = new Unicorn();
         $unicorn->birthday("1930-24-10");
-        $this->assertEquals($unicorn->age(), "85 years");
+        $this->assertEquals($unicorn->age(), "86 years");
     }
 
+    /**
+     * @expectedException Exception
+     */
     public function testGetShouldThrowException()
     {
-        $this->setExpectedException("Exception");
         $unicorn = new Unicorn();
         $unicorn->nosuch();
     }
 
+    /**
+     * @expectedException Exception
+     */
     public function testSetShouldThrowException()
     {
-        $this->setExpectedException("Exception");
         $unicorn = new Unicorn();
         $unicorn->nosuch(666);
     }
