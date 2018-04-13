@@ -15,7 +15,9 @@
 
 namespace Witchcraft\Test;
 
-class HydrateTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class HydrateTest extends TestCase
 {
     public function testShouldHydrateWithSetter()
     {
@@ -44,9 +46,11 @@ class HydrateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($unicorn->speed, 512);
     }
 
+    /**
+     * @expectedException Exception
+     */
     public function testShouldThrowException()
     {
-        $this->setExpectedException("Exception");
         $unicorn = new Unicorn();
         $unicorn->hydrate(["nosuch" => 666]);
     }
